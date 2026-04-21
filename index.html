@@ -3,16 +3,19 @@
 <head>
   <title>Quiz App</title>
 </head>
+
 <body>
-  <h1>Quiz App Live 🚀</h1>
-  <p>This project is deployed using Netlify</p>
 
-  <button onclick="showMessage()">Click Me</button>
+<h1>Quiz App Live 🚀</h1>
 
-  <script>
-    function showMessage() {
-      alert("CI/CD Working Successfully!");
-    }
-  </script>
+<button onclick="startQuiz()">Start Quiz</button>
+
+<div id="quiz" style="display:none;">
+  <h3 id="question"></h3>
+  <div id="options"></div>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
