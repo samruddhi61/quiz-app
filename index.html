@@ -1,34 +1,176 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-body {
-  font-family: Arial;
-  text-align: center;
-  margin-top: 50px;
-}
+  <title>Smart Quiz App</title>
 
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  cursor: pointer;
-}
-</style>
-  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #334155;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .option {
+      display: block;
+      background: #475569;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #64748b;
+    }
+
+    .correct { background: green; }
+    .wrong { background: red; }
+
+    button {
+      margin: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      color: white;
+      cursor: pointer;
+    }
+
+    .progress {
+      height: 10px;
+      background: #475569;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #22c55e;
+      width: 0%;
+      border-radius: 5px;
+    }
+
+    .timer {
+      margin-bottom: 10px;
+      color: #facc15;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Quiz App Live 🚀</h1>
+<h1>🧠 Smart Quiz App</h1>
 
-<button onclick="startQuiz()">Start Quiz</button>
+<div class="container">
+  <div class="timer" id="timer">Time: 15s</div>
 
-<div id="quiz" style="display:none;">
-  <h3 id="question"></h3>
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <h2 id="question">Question</h2>
   <div id="options"></div>
+
+  <button onclick="nextQuestion()">Next</button>
 </div>
 
-<script src="script.js"></script>
+<script>
+const quiz = [
+  {
+    q: "What is HTML?",
+    options: ["Programming Language", "Markup Language", "Database", "OS"],
+    answer: 1
+  },
+  {
+    q: "What is CSS used for?",
+    options: ["Logic", "Styling", "Database", "Security"],
+    answer: 1
+  },
+  {
+    q: "What is JavaScript?",
+    options: ["Styling Tool", "Programming Language", "Database", "Browser"],
+    answer: 1
+  }
+];
+
+let index = 0;
+let score = 0;
+let time = 15;
+let timer;
+
+function loadQuestion() {
+  clearInterval(timer);
+  time = 15;
+  startTimer();
+
+  let q = quiz[index];
+  document.getElementById("question").innerText = q.q;
+
+  let optionsHTML = "";
+  q.options.forEach((opt, i) => {
+    optionsHTML += `<div class="option" onclick="selectAnswer(${i}, this)">${opt}</div>`;
+  });
+
+  document.getElementById("options").innerHTML = optionsHTML;
+  updateProgress();
+}
+
+function selectAnswer(i, element) {
+  let correct = quiz[index].answer;
+  let options = document.querySelectorAll(".option");
+
+  options.forEach(opt => opt.onclick = null);
+
+  if (i === correct) {
+    element.classList.add("correct");
+    score++;
+  } else {
+    element.classList.add("wrong");
+    options[correct].classList.add("correct");
+  }
+}
+
+function nextQuestion() {
+  index++;
+  if (index >= quiz.length) {
+    document.querySelector(".container").innerHTML = `
+      <h2>Quiz Finished 🎉</h2>
+      <p>Your Score: ${score}/${quiz.length}</p>
+    `;
+    return;
+  }
+  loadQuestion();
+}
+
+function updateProgress() {
+  let percent = ((index + 1) / quiz.length) * 100;
+  document.getElementById("progressBar").style.width = percent + "%";
+}
+
+function startTimer() {
+  timer = setInterval(() => {
+    time--;
+    document.getElementById("timer").innerText = "Time: " + time + "s";
+
+    if (time === 0) {
+      clearInterval(timer);
+      nextQuestion();
+    }
+  }, 1000);
+}
+
+loadQuestion();
+</script>
 
 </body>
 </html>
