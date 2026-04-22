@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Advanced Topic Quiz</title>
+  <title>Smart Multi-Topic Quiz</title>
 
   <style>
     body {
@@ -69,7 +69,7 @@
 
 <body>
 
-<h1>🧠 Smart Multi-Topic Quiz</h1>
+<h1>🧠 Smart Quiz App</h1>
 
 <div class="container">
 
@@ -93,43 +93,43 @@
 const data = {
 
 cpp: [
-{q:"C++ is?",o:["Programming Language","OS","DB","Tool"],a:0},
-{q:"Header file?",o:["iostream","stdio","math","conio"],a:0},
-{q:"Output function?",o:["cout","print","echo","display"],a:0},
-{q:"Input function?",o:["cin","scan","input","read"],a:0},
-{q:"OOP concept?",o:["Encapsulation","Styling","Design","DB"],a:0}
+{q:"C++ is?",o:["OS","DB","Programming Language","Tool"],a:2},
+{q:"Header file?",o:["math","iostream","stdio","conio"],a:1},
+{q:"Output function?",o:["print","cout","echo","display"],a:1},
+{q:"Input function?",o:["read","cin","scan","input"],a:1},
+{q:"OOP concept?",o:["Styling","Encapsulation","Design","DB"],a:1}
 ],
 
 java: [
-{q:"Java is?",o:["Language","DB","Tool","OS"],a:0},
-{q:"Java is?",o:["Platform Independent","Platform Dependent","None","Both"],a:0},
-{q:"Main function?",o:["main()","start()","run()","init()"],a:0},
-{q:"Keyword for class?",o:["class","define","struct","object"],a:0},
-{q:"Java runs on?",o:["JVM","CPU","GPU","RAM"],a:0}
+{q:"Java is?",o:["DB","Language","Tool","OS"],a:1},
+{q:"Java is?",o:["Platform Dependent","Platform Independent","None","Both"],a:1},
+{q:"Main function?",o:["start()","main()","run()","init()"],a:1},
+{q:"Keyword for class?",o:["struct","define","class","object"],a:2},
+{q:"Java runs on?",o:["CPU","GPU","JVM","RAM"],a:2}
 ],
 
 python: [
-{q:"Python is?",o:["Language","DB","Tool","OS"],a:0},
-{q:"Print function?",o:["print()","echo()","display()","show()"],a:0},
-{q:"Python is?",o:["Interpreted","Compiled","Both","None"],a:0},
-{q:"File extension?",o:[".py",".java",".cpp",".txt"],a:0},
-{q:"Data type?",o:["int","float","All","None"],a:2}
+{q:"Python is?",o:["Tool","Language","DB","OS"],a:1},
+{q:"Print function?",o:["show()","display()","print()","echo()"],a:2},
+{q:"Python is?",o:["Compiled","Interpreted","Both","None"],a:1},
+{q:"File extension?",o:[".java",".txt",".cpp",".py"],a:3},
+{q:"Data type?",o:["None","int","float","All"],a:3}
 ],
 
 fe: [
-{q:"Feature Engineering means?",o:["Data preprocessing","Coding","Styling","Testing"],a:0},
-{q:"Normalization is?",o:["Scaling data","Cleaning","Deleting","Sorting"],a:0},
-{q:"Encoding is used for?",o:["Categorical data","Numbers","Images","Audio"],a:0},
-{q:"Feature selection?",o:["Choosing important data","Deleting","Sorting","Training"],a:0},
-{q:"Outlier handling?",o:["Removing extreme values","Adding","Sorting","Encoding"],a:0}
+{q:"Feature Engineering means?",o:["Coding","Data preprocessing","Styling","Testing"],a:1},
+{q:"Normalization is?",o:["Cleaning","Scaling data","Deleting","Sorting"],a:1},
+{q:"Encoding is used for?",o:["Numbers","Categorical data","Images","Audio"],a:1},
+{q:"Feature selection?",o:["Deleting","Choosing important data","Sorting","Training"],a:1},
+{q:"Outlier handling?",o:["Adding","Sorting","Removing extreme values","Encoding"],a:2}
 ],
 
 iiot: [
-{q:"IIoT stands for?",o:["Industrial IoT","Internet","Tool","Tech"],a:0},
-{q:"Used in?",o:["Industries","Games","Movies","Music"],a:0},
-{q:"Sensor does?",o:["Collect data","Delete","Store","Process"],a:0},
-{q:"Example?",o:["Smart factory","Phone","Laptop","TV"],a:0},
-{q:"Purpose?",o:["Automation","Gaming","Music","Video"],a:0}
+{q:"IIoT stands for?",o:["Internet","Industrial IoT","Tool","Tech"],a:1},
+{q:"Used in?",o:["Games","Industries","Movies","Music"],a:1},
+{q:"Sensor does?",o:["Delete","Store","Collect data","Process"],a:2},
+{q:"Example?",o:["Phone","Smart factory","Laptop","TV"],a:1},
+{q:"Purpose?",o:["Gaming","Automation","Music","Video"],a:1}
 ],
 
 math: [
