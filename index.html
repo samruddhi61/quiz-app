@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Advanced Quiz App</title>
+  <title>Advanced Topic Quiz</title>
 
   <style>
     body {
       font-family: Arial;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
+      background: linear-gradient(135deg, #0f172a, #1e293b);
       color: white;
       text-align: center;
       padding: 20px;
     }
 
     .container {
-      max-width: 500px;
+      max-width: 550px;
       margin: auto;
       background: #334155;
       padding: 20px;
       border-radius: 15px;
+    }
+
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background: #22c55e;
+      color: white;
+      cursor: pointer;
     }
 
     .option {
@@ -33,45 +46,40 @@
     .correct { background: green; }
     .wrong { background: red; }
 
-    button {
-      margin: 10px;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background: #22c55e;
-      color: white;
-    }
-
     .progress {
       height: 10px;
       background: #475569;
       margin-bottom: 10px;
+      border-radius: 5px;
     }
 
     .progress-bar {
       height: 10px;
       background: #22c55e;
       width: 0%;
+      border-radius: 5px;
+    }
+
+    .timer {
+      color: #facc15;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 
 <body>
 
-<h1>🧠 Topic-Based Quiz App</h1>
+<h1>🧠 Smart Multi-Topic Quiz</h1>
 
 <div class="container">
 
 <select id="topicSelect">
-  <option value="html">HTML Quiz</option>
-  <option value="css">CSS Quiz</option>
-  <option value="js">JavaScript Quiz</option>
-  <option value="gk">General Knowledge</option>
-  <option value="math">Math Quiz</option>
-</select>
-  <option value="html">HTML Quiz</option>
-  <option value="css">CSS Quiz</option>
-  <option value="js">JavaScript Quiz</option>
+  <option value="cpp">C++</option>
+  <option value="java">Java</option>
+  <option value="python">Python</option>
+  <option value="fe">Feature Engineering</option>
+  <option value="iiot">IIoT</option>
+  <option value="math">Mathematics</option>
 </select>
 
 <button onclick="startQuiz()">Start Quiz</button>
@@ -83,53 +91,62 @@
 <script>
 
 const data = {
-  const data = {
 
-  html: [
-    { q: "HTML stands for?", o: ["Hyper Text Markup Language","High Tech","Home Tool","None"], a: 0 },
-    { q: "Tag for paragraph?", o: ["p","h1","div","span"], a: 0 },
-    { q: "Heading tag?", o: ["h1","p","div","body"], a: 0 },
-    { q: "Image tag?", o: ["img","pic","image","src"], a: 0 },
-    { q: "Link tag?", o: ["a","link","href","url"], a: 0 }
-  ],
+cpp: [
+{q:"C++ is?",o:["Programming Language","OS","DB","Tool"],a:0},
+{q:"Header file?",o:["iostream","stdio","math","conio"],a:0},
+{q:"Output function?",o:["cout","print","echo","display"],a:0},
+{q:"Input function?",o:["cin","scan","input","read"],a:0},
+{q:"OOP concept?",o:["Encapsulation","Styling","Design","DB"],a:0}
+],
 
-  css: [
-    { q: "CSS used for?", o: ["Styling","Logic","DB","None"], a: 0 },
-    { q: "Color property?", o: ["color","bg","style","font"], a: 0 },
-    { q: "Background color?", o: ["background","bgcolor","color","style"], a: 0 },
-    { q: "Font size property?", o: ["font-size","size","text","font"], a: 0 },
-    { q: "Border property?", o: ["border","line","edge","frame"], a: 0 }
-  ],
+java: [
+{q:"Java is?",o:["Language","DB","Tool","OS"],a:0},
+{q:"Java is?",o:["Platform Independent","Platform Dependent","None","Both"],a:0},
+{q:"Main function?",o:["main()","start()","run()","init()"],a:0},
+{q:"Keyword for class?",o:["class","define","struct","object"],a:0},
+{q:"Java runs on?",o:["JVM","CPU","GPU","RAM"],a:0}
+],
 
-  js: [
-    { q: "JS is?", o: ["Language","DB","Tool","None"], a: 0 },
-    { q: "Function keyword?", o: ["func","function","def","method"], a: 1 },
-    { q: "Variable keyword?", o: ["var","let","const","All"], a: 3 },
-    { q: "JS runs in?", o: ["Browser","Server","Both","None"], a: 2 },
-    { q: "Alert function?", o: ["alert()","msg()","print()","show()"], a: 0 }
-  ],
+python: [
+{q:"Python is?",o:["Language","DB","Tool","OS"],a:0},
+{q:"Print function?",o:["print()","echo()","display()","show()"],a:0},
+{q:"Python is?",o:["Interpreted","Compiled","Both","None"],a:0},
+{q:"File extension?",o:[".py",".java",".cpp",".txt"],a:0},
+{q:"Data type?",o:["int","float","All","None"],a:2}
+],
 
-  gk: [
-    { q: "Capital of India?", o: ["Delhi","Mumbai","Pune","Chennai"], a: 0 },
-    { q: "National animal?", o: ["Lion","Tiger","Elephant","Dog"], a: 1 },
-    { q: "Largest planet?", o: ["Earth","Mars","Jupiter","Venus"], a: 2 },
-    { q: "Water formula?", o: ["H2O","CO2","O2","NaCl"], a: 0 },
-    { q: "Sun is a?", o: ["Planet","Star","Galaxy","Moon"], a: 1 }
-  ],
+fe: [
+{q:"Feature Engineering means?",o:["Data preprocessing","Coding","Styling","Testing"],a:0},
+{q:"Normalization is?",o:["Scaling data","Cleaning","Deleting","Sorting"],a:0},
+{q:"Encoding is used for?",o:["Categorical data","Numbers","Images","Audio"],a:0},
+{q:"Feature selection?",o:["Choosing important data","Deleting","Sorting","Training"],a:0},
+{q:"Outlier handling?",o:["Removing extreme values","Adding","Sorting","Encoding"],a:0}
+],
 
-  math: [
-    { q: "5 + 3 = ?", o: ["6","7","8","9"], a: 2 },
-    { q: "10 - 4 = ?", o: ["5","6","7","8"], a: 1 },
-    { q: "2 × 6 = ?", o: ["10","12","14","16"], a: 1 },
-    { q: "9 ÷ 3 = ?", o: ["2","3","4","5"], a: 1 },
-    { q: "Square of 4?", o: ["8","12","16","20"], a: 2 }
-  ]
+iiot: [
+{q:"IIoT stands for?",o:["Industrial IoT","Internet","Tool","Tech"],a:0},
+{q:"Used in?",o:["Industries","Games","Movies","Music"],a:0},
+{q:"Sensor does?",o:["Collect data","Delete","Store","Process"],a:0},
+{q:"Example?",o:["Smart factory","Phone","Laptop","TV"],a:0},
+{q:"Purpose?",o:["Automation","Gaming","Music","Video"],a:0}
+],
+
+math: [
+{q:"2+2?",o:["3","4","5","6"],a:1},
+{q:"5x3?",o:["10","15","20","25"],a:1},
+{q:"Square of 5?",o:["10","20","25","30"],a:2},
+{q:"10/2?",o:["3","4","5","6"],a:2},
+{q:"7-2?",o:["4","5","6","7"],a:1}
+]
 
 };
 
 let quiz = [];
 let index = 0;
 let score = 0;
+let time = 15;
+let timer;
 
 function startQuiz() {
   const topic = document.getElementById("topicSelect").value;
@@ -140,9 +157,14 @@ function startQuiz() {
 }
 
 function loadQuestion() {
+  clearInterval(timer);
+  time = 15;
+  startTimer();
+
   let q = quiz[index];
 
   let html = `
+    <div class="timer">Time: ${time}s</div>
     <div class="progress">
       <div class="progress-bar" style="width:${((index+1)/quiz.length)*100}%"></div>
     </div>
@@ -158,7 +180,7 @@ function loadQuestion() {
   document.getElementById("quizBox").innerHTML = html;
 }
 
-function selectAnswer(i,el) {
+function selectAnswer(i,el){
   let correct = quiz[index].a;
   let options = document.querySelectorAll(".option");
 
@@ -173,16 +195,27 @@ function selectAnswer(i,el) {
   }
 }
 
-function next() {
+function next(){
   index++;
   if(index>=quiz.length){
     document.getElementById("quizBox").innerHTML = `
-      <h2>Finished 🎉</h2>
-      <p>Score: ${score}/${quiz.length}</p>
+      <h2>Quiz Finished 🎉</h2>
+      <p>Your Score: ${score}/${quiz.length}</p>
     `;
     return;
   }
   loadQuestion();
+}
+
+function startTimer(){
+  timer = setInterval(()=>{
+    time--;
+    document.querySelector(".timer").innerText = "Time: " + time + "s";
+    if(time===0){
+      clearInterval(timer);
+      next();
+    }
+  },1000);
 }
 
 </script>
