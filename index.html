@@ -66,6 +66,12 @@
   <option value="html">HTML Quiz</option>
   <option value="css">CSS Quiz</option>
   <option value="js">JavaScript Quiz</option>
+  <option value="gk">General Knowledge</option>
+  <option value="math">Math Quiz</option>
+</select>
+  <option value="html">HTML Quiz</option>
+  <option value="css">CSS Quiz</option>
+  <option value="js">JavaScript Quiz</option>
 </select>
 
 <button onclick="startQuiz()">Start Quiz</button>
@@ -77,18 +83,48 @@
 <script>
 
 const data = {
+  const data = {
+
   html: [
     { q: "HTML stands for?", o: ["Hyper Text Markup Language","High Tech","Home Tool","None"], a: 0 },
-    { q: "Tag for paragraph?", o: ["p","h1","div","span"], a: 0 }
+    { q: "Tag for paragraph?", o: ["p","h1","div","span"], a: 0 },
+    { q: "Heading tag?", o: ["h1","p","div","body"], a: 0 },
+    { q: "Image tag?", o: ["img","pic","image","src"], a: 0 },
+    { q: "Link tag?", o: ["a","link","href","url"], a: 0 }
   ],
+
   css: [
     { q: "CSS used for?", o: ["Styling","Logic","DB","None"], a: 0 },
-    { q: "Color property?", o: ["color","bg","style","font"], a: 0 }
+    { q: "Color property?", o: ["color","bg","style","font"], a: 0 },
+    { q: "Background color?", o: ["background","bgcolor","color","style"], a: 0 },
+    { q: "Font size property?", o: ["font-size","size","text","font"], a: 0 },
+    { q: "Border property?", o: ["border","line","edge","frame"], a: 0 }
   ],
+
   js: [
     { q: "JS is?", o: ["Language","DB","Tool","None"], a: 0 },
-    { q: "Function keyword?", o: ["func","function","def","method"], a: 1 }
+    { q: "Function keyword?", o: ["func","function","def","method"], a: 1 },
+    { q: "Variable keyword?", o: ["var","let","const","All"], a: 3 },
+    { q: "JS runs in?", o: ["Browser","Server","Both","None"], a: 2 },
+    { q: "Alert function?", o: ["alert()","msg()","print()","show()"], a: 0 }
+  ],
+
+  gk: [
+    { q: "Capital of India?", o: ["Delhi","Mumbai","Pune","Chennai"], a: 0 },
+    { q: "National animal?", o: ["Lion","Tiger","Elephant","Dog"], a: 1 },
+    { q: "Largest planet?", o: ["Earth","Mars","Jupiter","Venus"], a: 2 },
+    { q: "Water formula?", o: ["H2O","CO2","O2","NaCl"], a: 0 },
+    { q: "Sun is a?", o: ["Planet","Star","Galaxy","Moon"], a: 1 }
+  ],
+
+  math: [
+    { q: "5 + 3 = ?", o: ["6","7","8","9"], a: 2 },
+    { q: "10 - 4 = ?", o: ["5","6","7","8"], a: 1 },
+    { q: "2 × 6 = ?", o: ["10","12","14","16"], a: 1 },
+    { q: "9 ÷ 3 = ?", o: ["2","3","4","5"], a: 1 },
+    { q: "Square of 4?", o: ["8","12","16","20"], a: 2 }
   ]
+
 };
 
 let quiz = [];
